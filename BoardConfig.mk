@@ -243,7 +243,6 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_KERNEL_CMDLINE += skip_initramfs rootwait ro init=/init
 
 # Treble
-PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 
 # Timeservice
