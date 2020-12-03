@@ -517,7 +517,9 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
+    $(DEVICE_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel
 
 # Shims
 PRODUCT_PACKAGES += \
