@@ -44,6 +44,9 @@ $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/config.mk)
 # Common Tree Path
 COMMON_PATH := device/xiaomi/sdm660-common
 
+# Inherit Dirac
+$(call inherit-product-if-exists, vendor/xiaomi/dirac/dirac.mk)
+
 # Inherit properties
 $(call inherit-product, $(COMMON_PATH)/common_prop.mk)
 
