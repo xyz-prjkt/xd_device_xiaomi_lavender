@@ -37,7 +37,7 @@
 #define TAP_TO_WAKE_NODE "/sys/touchpanel/double_tap"
 #endif
 
-extern struct stat_pair rpm_stat_map[];
+extern struct stats_section master_sections[];
 
 namespace android {
 namespace hardware {
@@ -164,46 +164,39 @@ Return<void> Power::setFeature(Feature feature, bool activate)  {
 Return<void> Power::getPlatformLowPowerStats(getPlatformLowPowerStats_cb _hidl_cb) {
 
     hidl_vec<PowerStatePlatformSleepState> states;
-    uint64_t stats[MAX_PLATFORM_STATS * MAX_RPM_PARAMS] = {0};
-    uint64_t *values;
+    uint64_t stats[SYSTEM_SLEEP_STATE_COUNT * SYSTEM_STATE_STATS_COUNT] = {0};
+    uint64_t all_stats[MASTER_COUNT * MASTER_STATS_COUNT] = {0};
+    uint64_t *state_stats;
+    uint64_t *section_stats;
     struct PowerStatePlatformSleepState *state;
-    int ret;
-
-    states.resize(PLATFORM_SLEEP_MODES_COUNT);
-
-    ret = extract_platform_stats(stats);
-    if (ret != 0) {
+    states.resize(SYSTEM_SLEEP_STATE_COUNT);
+    if (extract_system_stats(stats, ARRAY_SIZE(stats)) != 0 || extract_master_stats(all_stats, ARRAY_SIZE(all_stats)) != 0) {
         states.resize(0);
         goto done;
     }
-
-    /* Update statistics for XO_shutdown */
-    state = &states[RPM_MODE_XO];
+    /* Update statistics for XO */
+    state = &states[SYSTEM_STATE_XO];
     state->name = "XO_shutdown";
-    values = stats + (RPM_MODE_XO * MAX_RPM_PARAMS);
-
-    state->residencyInMsecSinceBoot = values[1];
-    state->totalTransitions = values[0];
+    state_stats = &stats[SYSTEM_STATE_XO * SYSTEM_STATE_STATS_COUNT];
+    state->residencyInMsecSinceBoot = state_stats[ACCUMULATED_TIME_MS];
+    state->totalTransitions = state_stats[TOTAL_COUNT];
     state->supportedOnlyInSuspend = false;
-    state->voters.resize(XO_VOTERS);
-    for(size_t i = 0; i < XO_VOTERS; i++) {
-        int voter = static_cast<int>(i + XO_VOTERS_START);
-        state->voters[i].name = rpm_stat_map[voter].label;
-        values = stats + (voter * MAX_RPM_PARAMS);
-        state->voters[i].totalTimeInMsecVotedForSinceBoot = values[0] / RPM_CLK;
-        state->voters[i].totalNumberOfTimesVotedSinceBoot = values[1];
+    state->voters.resize(MASTER_COUNT);
+    for (size_t i = 0; i < MASTER_COUNT; i++) {
+        state->voters[i].name = master_sections[i].label;
+        section_stats = &all_stats[i * MASTER_STATS_COUNT];
+        state->voters[i].totalTimeInMsecVotedForSinceBoot = section_stats[SLEEP_CUMULATIVE_DURATION_MS] / RPM_CLK;
+        state->voters[i].totalNumberOfTimesVotedSinceBoot = section_stats[SLEEP_ENTER_COUNT];
     }
 
-    /* Update statistics for VMIN state */
-    state = &states[RPM_MODE_VMIN];
+    /* Update statistics for VMIN */
+    state = &states[SYSTEM_STATE_VMIN];
     state->name = "VMIN";
-    values = stats + (RPM_MODE_VMIN * MAX_RPM_PARAMS);
-
-    state->residencyInMsecSinceBoot = values[1];
-    state->totalTransitions = values[0];
+    state_stats = &stats[SYSTEM_STATE_VMIN * SYSTEM_STATE_STATS_COUNT];
+    state->residencyInMsecSinceBoot = state_stats[ACCUMULATED_TIME_MS];
+    state->totalTransitions = state_stats[TOTAL_COUNT];
     state->supportedOnlyInSuspend = false;
-    state->voters.resize(VMIN_VOTERS);
-    //Note: No filling of state voters since VMIN_VOTERS = 0
+    state->voters.resize(0);
 
 done:
     _hidl_cb(states, Status::SUCCESS);
