@@ -32,6 +32,15 @@ on init
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
 
+    # Setup dynamic stune boost
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 15
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost_ms 1000
+    write /dev/stune/top-app/schedtune.sched_boost 15
+
+    # Configure CPU input boost
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1401600 4:1747200"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 60
+
     # Setup permission for Power HAL
     chown system system /dev/stune/top-app/schedtune.boost
     chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
