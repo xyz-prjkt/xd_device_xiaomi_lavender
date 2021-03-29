@@ -101,6 +101,18 @@ product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so|8305c614ebf13f84f15989631b8fdfdb9828d9be
 vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so|eb0e912d25b06f977d5a89345c72d142b7ffb8ae
 
+# Bluetooth (qti) - from LA.UM.8.2.r1-07400-sdm660.0
+vendor/lib/btaudio_offload_if.so|5b1c1d81aeaa39923b28196c84aa2269d318fcd6
+vendor/lib/hw/audio.bluetooth_qti.default.so|bbf5bed40ab75e0feed0753a40743dbf6979dfb9
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|87df9077916c6b9d4668c2156da165492a393386
+vendor/lib/libbluetooth_audio_session_qti.so|dcd45e11d85eb605b5f516961f88bf8b0a80c0eb
+vendor/lib/libbthost_if.so|efec404bb92b5c70593e1f81a145a9319704684f
+vendor/lib64/btaudio_offload_if.so|f9d7229e818a3044d56739d9d47462c4af726c02
+vendor/lib64/hw/audio.bluetooth_qti.default.so|102539a0013edf06790215b21bed68c704437a96
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|93f09e7ee848e2d6fee7f0810ad8a3e57346b72c
+vendor/lib64/libbluetooth_audio_session_qti.so|c2b100d5fbce3d219515f8c359c6990a08e9fa94
+vendor/lib64/libbthost_if.so|fb4d3f4e17b26ed3459657e799ec75f2d96bf959
+
 # Bluetooth - from LA.UM.8.2.r1-07400-sdm660.0
 lib/libbtconfigstore.so|d2920013538bcab32432fc04b5892127b5d09ddf
 lib64/libbtconfigstore.so|9efb0fb40e7a1fe316aa9d0bc16564d86e165bfa
@@ -392,7 +404,7 @@ vendor/lib64/libllvm-glnext.so|78bb8d245478e212412e34c49eb1120e875cd0b9
 vendor/lib64/libllvm-qcom.so|5b9c69743b6563094fb6879135c32e29acaccafa
 vendor/lib64/librs_adreno.so|f76ffe1488c0622698b15884940eb6fd33346a71
 vendor/lib64/librs_adreno_sha1.so|13dc11654b454d5d5ebe5583765811e4fa11ba4a
-vendor/lib64/libRSDriver_adreno.so|b3d5f6b891f6ef0e8f079609d2722f1c29d28c8b
+vendor/lib64/libRSDriver_adreno.so|d1a6c079de14a665fa73cc217c46977ef84c08aa
 
 # Graphics (HDR) - from LA.UM.8.2.r1-07400-sdm660.0
 vendor/lib/libhdr_tm.so|0104cdb2789ab1fb54b6b93564300f13ffeefc39

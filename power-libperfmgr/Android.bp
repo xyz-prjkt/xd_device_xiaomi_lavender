@@ -32,7 +32,6 @@ cc_binary {
     name: "android.hardware.power-service.xiaomi_sdm660-libperfmgr",
     relative_install_path: "hw",
     init_rc: ["aidl/android.hardware.power-service.xiaomi_sdm660-libperfmgr.rc"],
-    vintf_fragments: ["aidl/android.hardware.power-service.xiaomi_sdm660.xml"],
     vendor: true,
     shared_libs: [
         "android.hardware.power-ndk_platform",
