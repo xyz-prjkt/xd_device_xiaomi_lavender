@@ -22,28 +22,25 @@
 # definition file).
 #
 
-# Common Tree Path
-COMMON_PATH := device/xiaomi/sdm660-common
+# Device Tree Path
+DEVICE_PATH := device/xiaomi/lavender
 
-# A/B
-ifeq ($(ENABLE_AB), true)
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS ?= \
-    boot \
-    system \
-    vendor
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-BOARD_USES_RECOVERY_AS_BOOT := true
-TARGET_NO_RECOVERY := true
-endif
+# Assert
+TARGET_OTA_ASSERT_DEVICE := lavender
 
 # APEX image
-ifeq ($(ENABLE_APEX), true)
 DEXPREOPT_GENERATE_APEX_IMAGE := true
-endif
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+
+# AVB
+BOARD_AVB_ENABLE := true
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 
 # Broken Files/Headers
 BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
@@ -63,12 +60,6 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := kryo
 
-# FM
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
-AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
-BOARD_HAS_QCA_FM_SOC := cherokee
-endif
-
 # Audio
 AUDIO_DISABLE_SWAP_CHANNELS := true
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
@@ -86,7 +77,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAS_QCA_BT_SOC := "cherokee"
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 QCOM_BT_USE_BTNV := true
 QCOM_BT_USE_SMD_TTY := true
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
@@ -120,13 +111,17 @@ TARGET_KERNEL_CLANG_VERSION := proton
 BOARD_USES_QCNE := true
 
 # ConfigFS
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
 
 # Display
+TARGET_SCREEN_DENSITY := 420
 BOARD_USES_ADRENO := true
 TARGET_USES_HWC2 := true
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_ION := true
+
+# DT2W
+TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -140,15 +135,15 @@ GNSS_HIDL_VERSION := 2.1
 LOC_HIDL_VERSION := 4.0
 
 # HIDL
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # HWUI
 HWUI_COMPILE_FOR_PERF := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sdm660
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
@@ -164,6 +159,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_SOURCE := kernel/xiaomi/lavender
+TARGET_KERNEL_CONFIG := lavender-perf_defconfig
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 # Enable stats logging in LMKD
@@ -190,6 +186,9 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+# Platform
+BOARD_VENDOR_PLATFORM := xiaomi-sdm660
+
 # Extra Symlink
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
@@ -212,13 +211,11 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := false
 
 # Recovery
-ifneq ($(filter lavender,$(TARGET_DEVICE)),)
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_A.qcom
-else ifeq ($(ENABLE_AB), true)
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_AB.qcom
-else
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-endif
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_lavender
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # Renderscript
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
@@ -229,12 +226,13 @@ PROTOBUF_SUPPORTED := true
 # SELinux
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 SELINUX_IGNORE_NEVERALLOWS := true
-BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
-# SurfaceFlinger
-TARGET_USE_AOSP_SURFACEFLINGER := true
+# SAR
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_KERNEL_CMDLINE += skip_initramfs rootwait ro init=/init
 
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
@@ -249,6 +247,9 @@ TARGET_USES_MKE2FS := true
 # VNDK
 BOARD_VNDK_VERSION := current
 
+# Vendor Security patch level
+VENDOR_SECURITY_PATCH := 2020-08-05
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
@@ -257,6 +258,7 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 QC_WIFI_HIDL_FEATURE_DUAL_AP := true
+WLAN_MAC_SYMLINK := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
