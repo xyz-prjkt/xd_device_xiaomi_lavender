@@ -90,8 +90,8 @@
       "Name": "TASchedtuneBoost",
       "Path": "/dev/stune/top-app/schedtune.boost",
       "Values": [
-        "30",
-        "10"
+        "5",
+        "1"
       ],
       "ResetOnInit": true
     },
@@ -186,7 +186,7 @@
       "PowerHint": "INTERACTION",
       "Node": "TASchedtuneBoost",
       "Duration": 0,
-      "Value": "30"
+      "Value": "5"
     },
     {
       "PowerHint": "INTERACTION",
@@ -282,7 +282,7 @@
       "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GPUMinFreq",
       "Duration": 0,
-      "Value": "647000000"
+      "Value": "465000000"
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",

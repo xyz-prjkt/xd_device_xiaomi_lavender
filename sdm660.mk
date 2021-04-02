@@ -335,15 +335,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     init.safailnet.rc \
 
-# FM
-ifeq ($(BOARD_HAVE_QCOM_FM),true)
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio \
-    qcom.fmradio.xml
-endif
-
 # Ion
 PRODUCT_PACKAGES += \
     libion
@@ -447,17 +438,11 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.xiaomi_sdm660-libperfmgr \
-    android.hardware.power.stats@1.0-service.mock
+    xyz_xyzuan.android.hardware.power@1.3-service.xiaomi_lavender-libperfmgr
 
 # Powerhint
-ifeq ($(EAS_POWERHINT_VARIANT), sdm636)
     PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/power-libperfmgr/sdm636_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-else
-    PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/power-libperfmgr/sdm660_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-endif
+    $(COMMON_PATH)/xyz-power/lavender_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Preopt SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
@@ -542,10 +527,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(COMMON_PATH) \
     hardware/google/interfaces \
-    hardware/google/pixel \
-    hardware/qcom/display \
-    hardware/qcom/media \
-    vendor/qcom/opensource/audio-hal/primary-hal
+    hardware/google/pixel
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -626,7 +608,3 @@ PRODUCT_BOOT_JARS += \
 # DeviceSettings
 PRODUCT_PACKAGES += \
    DeviceSettings
-   
-# IPA
-USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
-USE_DEVICE_SPECIFIC_IPACFG_MGR := true
