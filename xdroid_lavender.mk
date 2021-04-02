@@ -29,6 +29,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/lavender/device.mk)
 
+# Inherit vendor proprietary files
+$(call inherit-product, vendor/xiaomi/lavender/lavender-vendor.mk)
+$(call inherit-product, vendor/xiaomi/lavender/sdm660-vendor.mk)
+
 # Inherit some common xd stuff.
 $(call inherit-product, vendor/xdroid/config/common.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
