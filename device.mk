@@ -287,8 +287,7 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.xiaomi_parts.rc \
     init.verity.rc \
-    ueventd.qcom.rc \
-    init.safailnet.rc \
+    ueventd.qcom.rc
 
 # Ion
 PRODUCT_PACKAGES += \
