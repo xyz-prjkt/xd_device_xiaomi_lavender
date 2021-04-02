@@ -1,0 +1,76 @@
+# Adaptive Display
+ro.qcom.ad=1
+ro.qcom.ad.calib.data=/system/etc/calib.cfg
+ro.qcom.ad.sensortype=2
+
+# Bluetooth
+persist.vendor.bt.a2dp.aac_whitelist=false
+ro.bluetooth.library_name=libbluetooth_qti.so
+vendor.bluetooth.soc=cherokee
+
+# Camera
+persist.bokeh.switch.lux=290
+persist.flash.low.lux=390
+persist.imx376_sunny.low.lux=310
+persist.imx376_sunny.light.lux=280
+persist.imx376_ofilm.low.lux=310
+persist.imx376_ofilm.light.lux=280
+
+# Charger
+ro.charger.disable_init_blank=true
+ro.charger.enable_suspend=true
+
+# Dirac algo tsx 9/12
+persist.dirac.acs.controller=qem
+persist.dirac.acs.storeSettings=1
+persist.dirac.acs.ignore_error=1
+
+# Eyecare
+ro.eyecare.brightness.threshold=3
+ro.eyecare.brightness.level=8
+ro.hist.brightness.threshold=5
+
+# Radio
+DEVICE_PROVISIONED=1
+ril.subscription.types=NV,RUIM
+
+# Zygote preforking
+persist.device_config.runtime_native.usap_pool_enabled=true
+
+ro.sys.fw.dex2oat_thread_count=8
+audio.safemedia.bypass=true
+persist.vendor.camera.privapp.list=org.codeaurora.snapcam
+persist.hwc.enable_vds=1
+ro.qualcomm.cabl=0
+vendor.video.disable.ubwc=1
+vendor.display.enable_default_color_mode=0
+video.disable.ubwc=1
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+ro.lmk.log_stats=true
+ro.lmk.use_psi=false
+media.aac_51_output_enabled=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
+mm.enable.qcom_parser=13631471
+mm.enable.smoothstreaming=true
+mmp.enable.3g2=true
+persist.mm.enable.prefetch=true
+vidc.enc.target_support_bframe=1
+ro.netflix.bsp_rev=Q660-13149-1
+gsm.proximity.enable=true
+persist.backup.ntpServer=0.pool.ntp.org
+persist.radio.aosp_usr_pref_sel=true
+persist.radio.add_power_save=1
+persist.radio.VT_CAM_INTERFACE=2
+persist.radio.data_con_rprt=1
+persist.hwc.ptor.enable=true
+ro.storaged.event.interval=99999
+ro.vendor.qti.va_aosp.support=1
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1

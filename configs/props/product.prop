@@ -1,0 +1,9 @@
+# DRM
+drm.service.enabled=true
+
+# Google
+ro.com.google.clientidbase.ms=android-xiaomi-rev2
+ro.com.google.ime.kb_pad_port_b=1
+ro.com.google.ime.corner_key_r=32
+
+persist.timed.enable=true
