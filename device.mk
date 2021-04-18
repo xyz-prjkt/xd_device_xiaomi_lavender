@@ -381,7 +381,8 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    libplatformconfig
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
