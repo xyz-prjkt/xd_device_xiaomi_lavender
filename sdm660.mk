@@ -391,7 +391,6 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # RRO configuration
 TARGET_USES_RRO := true
-PRODUCT_ENFORCE_RRO_TARGETS := *
     
 # Permissions
 PRODUCT_COPY_FILES += \
