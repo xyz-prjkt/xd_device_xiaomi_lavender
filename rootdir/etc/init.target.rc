@@ -134,8 +134,8 @@ on boot
     chmod 0664 /sys/touchpanel/double_tap
 
     # SmartCharging
-    chown system system /sys/class/power_supply/battery/input_suspend
-    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
 
 #Peripheral manager
 service vendor.per_mgr /system/vendor/bin/pm-service
