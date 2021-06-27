@@ -121,7 +121,7 @@ int ipa_reset_hw_index_counter();
 
 #ifdef FEATURE_IPACM_HAL
 	IPACM_OffloadManager* OffloadMng;
-	HAL *hal;
+	::android::sp<HAL> hal;
 #endif
 
 /* start netlink socket monitor*/
@@ -270,6 +270,10 @@ void* ipa_driver_msg_notifier(void *param)
 #endif
 	ipacm_cmd_q_data new_neigh_evt;
 	ipacm_event_data_all* new_neigh_data;
+#ifdef IPA_MTU_EVENT_MAX
+	ipacm_event_mtu_info *mtu_event = NULL;
+	ipa_mtu_info *mtu_info;
+#endif
 
 	param = NULL;
 	fd = open(IPA_DRIVER, O_RDWR);
@@ -450,12 +454,11 @@ void* ipa_driver_msg_notifier(void *param)
 			}
 			memcpy(event_ex, buffer + sizeof(struct ipa_msg_meta), length);
 			data_ex = (ipacm_event_data_wlan_ex *)malloc(sizeof(ipacm_event_data_wlan_ex) + event_ex_o.num_of_attribs * sizeof(ipa_wlan_hdr_attrib_val));
-			if (data_ex == NULL)
-			{
+		    if (data_ex == NULL)
+		    {
 				IPACMERR("unable to allocate memory for event data\n");
-				free(event_ex);
-				return NULL;
-			}
+		    	return NULL;
+		    }
 			data_ex->num_of_attribs = event_ex->num_of_attribs;
 
 			memcpy(data_ex->attribs,
@@ -761,10 +764,19 @@ void* ipa_driver_msg_notifier(void *param)
 				IPACMERR("calling OffloadMng->elrInstance->onOffloadStopped \n");
 				OffloadMng->elrInstance->onOffloadStopped(IpaEventRelay::ERROR);
 			}
-			/* WA to clean up wlan instances during SSR */
-			evt_data.event = IPA_SSR_NOTICE;
-			evt_data.evt_data = NULL;
-			break;
+			/* Starting from Hastings, WLAN is not restarted as part of Modem SSR.
+			 * No need to reset NAT Iface.
+			 */
+#ifdef IPA_HW_v4_9
+                        if (IPACM_Iface::ipacmcfg->GetIPAVer() != IPA_HW_v4_9)
+#endif
+			{
+                                /* WA to clean up wlan instances during SSR */
+                                evt_data.event = IPA_SSR_NOTICE;
+                                evt_data.evt_data = NULL;
+                                break;
+                        }
+                        continue;
 		case IPA_SSR_AFTER_POWERUP:
 			IPACMDBG_H("Received IPA_SSR_AFTER_POWERUP\n");
 			OffloadMng = IPACM_OffloadManager::GetInstance();
@@ -866,6 +878,32 @@ void* ipa_driver_msg_notifier(void *param)
 			break;
 #endif
 
+#ifdef IPA_MTU_EVENT_MAX
+		case IPA_SET_MTU:
+			mtu_event = (ipacm_event_mtu_info *)malloc(sizeof(*mtu_event));
+			if(mtu_event == NULL)
+			{
+				IPACMERR("Failed to allocate memory.\n");
+				return NULL;
+			}
+			mtu_info = &(mtu_event->mtu_info);
+			memcpy(mtu_info, buffer + sizeof(struct ipa_msg_meta), sizeof(struct ipa_mtu_info));
+			IPACMDBG_H("Received IPA_SET_MTU if_name %s ip_type %d mtu_v4 %d mtu_v6 %d\n",
+				mtu_info->if_name, mtu_info->ip_type, mtu_info->mtu_v4, mtu_info->mtu_v6);
+			if (mtu_info->ip_type > IPA_IP_MAX)
+			{
+				IPACMERR("ip_type (%d) beyond the Max range (%d), abort\n",
+				mtu_info->ip_type, IPA_IP_MAX);
+				return NULL;
+			}
+
+			ipa_get_if_index(mtu_info->if_name, &(mtu_event->if_index));
+
+			evt_data.event = IPA_MTU_SET;
+			evt_data.evt_data = mtu_event;
+			break;
+#endif
+
 		default:
 			IPACMDBG_H("Unhandled message type: %d\n", event_hdr.msg_type);
 			continue;
@@ -952,11 +990,11 @@ int main(int argc, char **argv)
 	IPACMDBG_H(" START IPACM_OffloadManager and link to android framework\n");
 #endif
 
-#ifdef FEATURE_ETH_BRIDGE_LE
-	IPACM_LanToLan* lan2lan = IPACM_LanToLan::get_instance();
-	IPACMDBG_H("Staring IPACM_LanToLan instance %p\n", lan2lan);
-#endif
-
+	if (IPACM_Iface::ipacmcfg->isEthBridgingSupported())
+	{
+		IPACM_LanToLan* lan2lan = IPACM_LanToLan::get_instance();
+		IPACMDBG_H("Staring IPACM_LanToLan instance %p\n", lan2lan);
+	}
 	CtList = new IPACM_ConntrackListener();
 
 	IPACMDBG_H("Staring IPA main\n");
