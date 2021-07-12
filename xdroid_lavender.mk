@@ -38,6 +38,7 @@ $(call inherit-product, vendor/xdroid/config/common.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 XDROID_BUILD_TYPE := DEV
 XDROID_UI_BLUR := true
+XDROID_BOOT_DARK := true
 
 # Build Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
