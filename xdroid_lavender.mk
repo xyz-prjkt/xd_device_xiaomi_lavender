@@ -36,7 +36,7 @@ $(call inherit-product, vendor/xiaomi/lavender/sdm660-vendor.mk)
 # Inherit some common xd stuff.
 $(call inherit-product, vendor/xdroid/config/common.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
-XDROID_BUILD_TYPE := DEV
+XDROID_BUILD_TYPE := OBT
 XDROID_BOOT_DARK := true
 
 # Build Fingerprint
