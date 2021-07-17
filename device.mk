@@ -343,7 +343,8 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-lavender
+    $(DEVICE_PATH)/overlay-lavender \
+    $(DEVICE_PATH)/overlay-xd
 
 # QTI Bluetooth
 include vendor/qcom/opensource/commonsys-intf/bluetooth/bt-commonsys-intf-board.mk
