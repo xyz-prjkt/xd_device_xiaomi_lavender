@@ -1,5 +1,6 @@
 # DRM
 drm.service.enabled=true
+media.mediadrmservice.enable=true
 
 # Google
 ro.com.google.clientidbase.ms=android-xiaomi-rev2
