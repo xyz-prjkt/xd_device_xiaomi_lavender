@@ -95,34 +95,6 @@
             android:persistent="true"
             android:defaultValue="false" />
 
-        <Preference
-            android:key="device_jason"
-            android:persistent="false"
-            android:summary="@string/jason_pref_summary"
-            android:title="@string/jason_pref_title"
-            android:icon="@drawable/ic_jason">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="org.lineageos.settings.devicex.ButtonSettingsActivity"
-                android:targetPackage="org.lineageos.settings.devicex" />
-        </Preference>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="thermal_profile"
-        android:title="@string/thermal_profile_title">
-
-        <org.lineageos.settings.device.preferences.SecureSettingListPreference
-            android:persistent="true"
-            android:defaultValue="0"
-            android:dialogTitle="@string/thermal_dialogTitle"
-            android:entries="@array/thermal_profiles"
-            android:entryValues="@array/thermal_values"
-            android:key="thermal"
-            android:summary="@string/thermal_summary"
-            android:title="@string/thermal_title"
-            android:icon="@drawable/ic_thermal" />
     </PreferenceCategory>
 
 </PreferenceScreen>
