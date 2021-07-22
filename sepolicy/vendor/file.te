@@ -8,6 +8,7 @@ type thermal_data_file, file_type, data_file_type;
 type sysfs_fpsinfo, sysfs_type, fs_type;
 type sysfs_headphonegain, sysfs_type, fs_type;
 type sysfs_micgain, sysfs_type, fs_type;
+type sysfs_earpiecegain, sysfs_type, fs_type;
 
 # HVDCP
 type vendor_sysfs_hvdcp, fs_type, sysfs_type;
