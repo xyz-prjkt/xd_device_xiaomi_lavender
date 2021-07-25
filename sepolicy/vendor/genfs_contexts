@@ -2,6 +2,9 @@
 genfscon sysfs /devices/platform/soc/c175000.i2c/i2c-1/1-0062                                                                                        u:object_r:sysfs_battery_supply:s0
 genfscon sysfs /devices/platform/soc/c176000.i2c/i2c-2/2-001d                                                                                        u:object_r:sysfs_battery_supply:s0
 
+# Battery Saver
+genfscon sysfs /module/battery_saver/parameters/enabled                                                                                              u:object_r:sysfs_battery_saver:s0
+
 # Camera
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video2/name                                         u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video3/name                                         u:object_r:sysfs_graphics:s0

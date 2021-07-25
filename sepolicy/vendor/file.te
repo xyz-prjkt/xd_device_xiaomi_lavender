@@ -18,3 +18,6 @@ type kcal_dev, sysfs_type, fs_type;
 
 # Sockets
 type audio_socket, file_type;
+
+# Battery Saver
+type sysfs_battery_saver, fs_type, sysfs_type;
