@@ -7,6 +7,7 @@ allow hal_power_default sysfs_touchpanel:dir search;
 allow hal_power_default sysfs_touchpanel:file rw_file_perms;
 allow hal_power_default sysfs_battery_saver:dir r_dir_perms;
 allow hal_power_default sysfs_battery_saver:file rw_file_perms;
+allow hal_power_default self:capability { kill sys_admin };
 
 r_dir_file(hal_power_default, sysfs_graphics)
 set_prop(hal_power_default, vendor_power_prop)
