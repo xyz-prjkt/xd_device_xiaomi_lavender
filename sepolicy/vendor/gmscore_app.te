@@ -1,2 +1,6 @@
 binder_call(gmscore_app, hal_memtrack_default);
+
+allow gmscore_app { firmware_file linkerconfig_file metadata_file postinstall_mnt_dir vendor_firmware_file }:dir getattr;
+allow gmscore_app { init_exec persist_file }:lnk_file getattr;
+
 dontaudit gmscore_app { bt_firmware_file firmware_file }:filesystem getattr;

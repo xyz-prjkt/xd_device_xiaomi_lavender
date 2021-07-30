@@ -1,0 +1,1 @@
+allow installd mnt_user_file:dir search;

@@ -4,5 +4,6 @@ get_prop(system_server, vendor_video_prop)
 allow system_server app_zygote:process getpgid;
 allow system_server blkio_dev:dir search;
 allow system_server sysfs_battery_supply:file rw_file_perms;
+allow system_server sysfs_rtc:file read;
 
 dontaudit system_server sysfs:file { read open getattr };
