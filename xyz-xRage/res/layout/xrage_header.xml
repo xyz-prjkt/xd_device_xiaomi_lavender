@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	`a property of xyzprjkt 2021
+	 Bought to you for xRage Zone
+-->
+<!-- Dashboard Title -->
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="25dp"
+		android:layout_marginStart="25dp"
+		android:layout_marginEnd="25dp"
+		android:orientation="vertical">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/xyzzone_app"
+			style="@style/xrage_text_primary"
+			android:textSize="28sp"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/xyzzone_app_summary"
+			style="@style/xrage_text_secondary"
+			android:textSize="20sp"
+			android:layout_marginBottom="25dp"/>
+	</LinearLayout>
