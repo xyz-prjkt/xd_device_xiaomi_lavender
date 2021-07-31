@@ -93,20 +93,4 @@
             android:persistent="true"
             android:defaultValue="false" />
 
-    <Preference
-        android:layout="@layout/xrage_preference_category"
-        android:selectable="false"
-        android:key="thermal_profile"
-        android:title="@string/thermal_profile_title"/>
-
-        <id.xyz.xyzzone.preferences.SecureSettingListPreference
-            android:defaultValue="0"
-            android:dialogTitle="@string/thermal_dialogTitle"
-            android:entries="@array/thermal_profiles"
-            android:entryValues="@array/thermal_values"
-            android:key="thermal"
-            android:summary="@string/thermal_summary"
-            android:title="@string/thermal_title"
-            android:icon="@drawable/ic_thermal" />
-
 </PreferenceScreen>

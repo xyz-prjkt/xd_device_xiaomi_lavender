@@ -70,8 +70,6 @@ public class BootReceiver extends BroadcastReceiver implements Utils {
                 context.getContentResolver(), XYZzone.PREF_NOTIF_LED, 100))));
         FileUtils.setValue(XYZzone.VIBRATION_STRENGTH_PATH, Settings.Secure.getInt(
                 context.getContentResolver(), XYZzone.PREF_VIBRATION_STRENGTH, 80) / 100.0 * (XYZzone.MAX_VIBRATION - XYZzone.MIN_VIBRATION) + XYZzone.MIN_VIBRATION);
-        FileUtils.setValue(XYZzone.THERMAL_PATH, Settings.Secure.getString(
-                context.getContentResolver(), XYZzone.PREF_THERMAL));
 
         boolean enabled = Settings.Secure.getInt(context.getContentResolver(), XYZzone.PREF_KEY_FPS_INFO, 0) == 1;
         if (enabled) {
