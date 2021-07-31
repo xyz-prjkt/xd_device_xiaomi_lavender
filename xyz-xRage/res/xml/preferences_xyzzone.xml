@@ -69,15 +69,6 @@
             android:icon="@drawable/ic_mic"
             android:title="@string/mic_gain"/>
 
-        <Preference
-            android:key="top_level_theme"
-            android:title="Xiaomi Dirac">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.xiaomi.dirac"
-                android:targetClass="com.xiaomi.dirac.DiracActivity" />
-    </Preference>
-
     <Preference
         android:layout="@layout/xrage_preference_category"
         android:selectable="false"
