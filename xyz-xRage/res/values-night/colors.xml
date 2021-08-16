@@ -14,4 +14,7 @@
      limitations under the License.
 -->
 <resources>
+
+     <color name="homepage_parts_icon">#B3B3B3</color>
+     
 </resources>

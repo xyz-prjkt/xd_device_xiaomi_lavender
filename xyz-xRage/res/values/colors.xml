@@ -15,5 +15,5 @@
 -->
 <resources>
     <color name="homepage_parts_background">#00000000</color>
-    <color name="homepage_parts_icon">#FF6700</color>
+    <color name="homepage_parts_icon">#757575</color>
 </resources>
