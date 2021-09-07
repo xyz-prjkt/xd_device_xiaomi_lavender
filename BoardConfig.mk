@@ -233,13 +233,7 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := false
 
 # Recovery
-ifneq ($(filter lavender,$(TARGET_DEVICE)),)
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab_A.qcom
-else ifeq ($(ENABLE_AB), true)
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab_AB.qcom
-else
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-endif
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_lavender
