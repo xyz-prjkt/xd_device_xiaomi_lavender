@@ -554,6 +554,7 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
+    vendor/xiaomi/lavender \
     hardware/google/interfaces \
     hardware/google/pixel
 
