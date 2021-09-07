@@ -390,7 +390,8 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay \
-    $(DEVICE_PATH)/overlay-lavender
+    $(DEVICE_PATH)/overlay-lavender \
+    $(DEVICE_PATH)/overlay-xd
 
 # Ramdisk
 PRODUCT_PACKAGES += \
