@@ -40,7 +40,7 @@ endif
 DEVICE_PATH := device/xiaomi/lavender
 
 # Inherit properties
-include $(DEVICE_PATH)/properties/common_prop.mk
+include $(DEVICE_PATH)/properties/device_prop.mk
 TARGET_ODM_PROP += $(DEVICE_PATH)/properties/odm.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/properties/product.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
@@ -536,7 +536,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor Config
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+    $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
 	$(DEVICE_PATH)/configs/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
 	$(DEVICE_PATH)/configs/sensors/elliptic.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/elliptic.conf
 
