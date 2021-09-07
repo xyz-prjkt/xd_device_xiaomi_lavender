@@ -1,4 +1,3 @@
 allow netmgrd self:capability sys_admin;
 
-set_prop(netmgrd, vendor_data_qmipriod_prop)
 set_prop(netmgrd, vendor_radio_prop)
