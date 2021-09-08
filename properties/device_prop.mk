@@ -352,3 +352,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.iwlan.enable=true \
 	persist.vendor.radio.data_con_rprt=1
+
+# QTI
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.servicetracker.disable=true
