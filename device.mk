@@ -450,7 +450,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    xyz_xyzuan.android.hardware.power@1.3-service.xiaomi_lavender-libperfmgr
+    xyz_xyzuan.android.hardware.power@1.3-service.xiaomi_lavender-libperfmgr \
+    android.hardware.power.stats@1.0-service.mock
 
 # Powerhint
 PRODUCT_COPY_FILES += \
