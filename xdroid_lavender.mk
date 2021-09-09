@@ -35,7 +35,7 @@ $(call inherit-product, vendor/xiaomi/lavender/vendor-sdm660.mk)
 
 # Inherit some common xdroid stuff.
 $(call inherit-product, vendor/xdroid/config/common.mk)
-XDROID_BUILD_TYPE := 4.19
+XDROID_BUILD_TYPE := OBT-4.19
 XDROID_BOOT_DARK := true
 XDROID_UI_BLUR := true
 
@@ -43,7 +43,7 @@ XDROID_UI_BLUR := true
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="lavender" \
     PRODUCT_NAME="lavender" \
-    PRIVATE_BUILD_DESC="redfin-user 11 RQ3A.210805.001.A1 7474174 release-keys" 
+    PRIVATE_BUILD_DESC="redfin-user 11 RQ3A.210805.001.A1 7474174 release-keys"
 
 # Build Fingerprint
 BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210805.001.A1/7474174:user/release-keys"
