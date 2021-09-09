@@ -146,7 +146,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
+    drm.service.enabled=true \
+    media.mediadrmservice.enable=true
 
 # Dirac
 PRODUCT_PROPERTY_OVERRIDES += \
