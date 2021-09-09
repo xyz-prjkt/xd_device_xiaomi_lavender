@@ -1,8 +1,5 @@
 ![Xiaomi Redmi Note 7](https://github.com/xyz-prjkt/xyz_assets/raw/main/xd_lavender.png)
 
-# Xiaomi Redmi Note 7
-# Device Configuration
-
 Redmi Note 7 (codenamed _"lavender"_) adalah smartphone kelas menengah kelas atas dari Xiaomi.
 
 Xiaomi Redmi Note 7 diumumkan dan dirilis pada Januari 2019.
