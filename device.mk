@@ -123,10 +123,6 @@ TARGET_BOOTANIMATION_SIZE := 1080
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
-# Broadcastradio
-PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl
-
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.4 \
