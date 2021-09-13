@@ -19,20 +19,6 @@
     <Preference
         android:layout="@layout/xrage_header"
         android:selectable="false"/>
-        
-    <Preference
-        android:layout="@layout/xrage_preference_category"
-        android:selectable="false"
-        android:key="vibration"
-        android:title="@string/vibration_title"/>
-
-        <id.xyz.xyzzone.preferences.VibrationSeekBarPreference
-            android:defaultValue="80"
-            android:key="vibration_strength"
-            android:max="100"
-            android:title="@string/vibration_strength_title"
-            app:min="1"
-            app:units="%" />
 
     <Preference
         android:layout="@layout/xrage_preference_category"

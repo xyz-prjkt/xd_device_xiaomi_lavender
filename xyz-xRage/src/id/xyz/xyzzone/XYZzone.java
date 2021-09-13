@@ -36,11 +36,6 @@ import java.lang.Math.*;
 public class XYZzone extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    // Vibrator Node
-    public static final String CATEGORY_VIBRATOR = "vibration";
-    public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
-    public static final String VIBRATION_STRENGTH_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
-
     // LED Node
     public static final String CATEGORY_NOTIF = "notification_led";
     public static final String PREF_NOTIF_LED = "notification_led_brightness";
@@ -55,10 +50,6 @@ public class XYZzone extends PreferenceFragment implements
     public static final  String PREF_MIC_GAIN = "mic_gain";
     public static final  String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
     public static final  String MIC_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
-
-    // value of vtg_min and vtg_max
-    public static final int MIN_VIBRATION = 116;
-    public static final int MAX_VIBRATION = 3596;
 
     public static final int MIN_LED = 1;
     public static final int MAX_LED = 255;
@@ -79,11 +70,6 @@ public class XYZzone extends PreferenceFragment implements
                     (NotificationLedSeekBarPreference) findPreference(PREF_NOTIF_LED);
             notifLedBrightness.setOnPreferenceChangeListener(this);
         } else { getPreferenceScreen().removePreference(findPreference(CATEGORY_NOTIF)); }
-
-        if (FileUtils.fileWritable(VIBRATION_STRENGTH_PATH)) {
-            VibrationSeekBarPreference vibrationStrength = (VibrationSeekBarPreference) findPreference(PREF_VIBRATION_STRENGTH);
-            vibrationStrength.setOnPreferenceChangeListener(this);
-        } else { getPreferenceScreen().removePreference(findPreference(CATEGORY_VIBRATOR)); }
         
         // Headphone & Mic Gain
         if (FileUtils.fileWritable(HEADPHONE_GAIN_PATH) && FileUtils.fileWritable(MIC_GAIN_PATH)) {
@@ -114,11 +100,6 @@ public class XYZzone extends PreferenceFragment implements
         switch (key) {
             case PREF_NOTIF_LED:
                 FileUtils.setValue(NOTIF_LED_PATH, (1 + Math.pow(1.05694, (int) value )));
-                break;
-
-            case PREF_VIBRATION_STRENGTH:
-                double vibrationValue = (int) value / 100.0 * (MAX_VIBRATION - MIN_VIBRATION) + MIN_VIBRATION;
-                FileUtils.setValue(VIBRATION_STRENGTH_PATH, vibrationValue);
                 break;
 
             case PREF_HEADPHONE_GAIN:
