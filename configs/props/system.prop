@@ -8,14 +8,6 @@ persist.vendor.bt.a2dp.aac_whitelist=false
 ro.bluetooth.library_name=libbluetooth_qti.so
 vendor.bluetooth.soc=cherokee
 
-# Camera
-persist.bokeh.switch.lux=290
-persist.flash.low.lux=390
-persist.imx376_sunny.low.lux=310
-persist.imx376_sunny.light.lux=280
-persist.imx376_ofilm.low.lux=310
-persist.imx376_ofilm.light.lux=280
-
 # Charger
 ro.charger.disable_init_blank=true
 ro.charger.enable_suspend=true
@@ -39,7 +31,6 @@ persist.device_config.runtime_native.usap_pool_enabled=true
 
 ro.sys.fw.dex2oat_thread_count=8
 audio.safemedia.bypass=true
-persist.vendor.camera.privapp.list=org.codeaurora.snapcam
 persist.hwc.enable_vds=1
 ro.qualcomm.cabl=0
 vendor.video.disable.ubwc=1
