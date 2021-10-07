@@ -242,21 +242,8 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1.vendor \
-    android.hardware.bluetooth@1.0.vendor \
-    android.frameworks.displayservice@1.0.vendor \
-    android.hardware.drm@1.4.vendor \
-    android.hardware.gatekeeper@1.0.vendor \
-    android.hardware.media.c2@1.1.vendor \
-    android.hardware.neuralnetworks@1.3.vendor \
-    android.hardware.keymaster@4.0.vendor \
-    android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio@1.4.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.0.vendor \
-    android.system.net.netd@1.1.vendor \
-    android.hardware.gnss@2.1.vendor
+# HIDL ( Vendor )
+$(foreach target, $(shell cat $(LOCAL_PATH)/vndk.txt), $(eval PRODUCT_PACKAGES += $(target).vendor))
 
 # IDC
 PRODUCT_COPY_FILES += \
@@ -313,18 +300,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl \
     $(DEVICE_PATH)/configs/keylayout/sdm660-snd-card_Button_Jack.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/sdm660-snd-card_Button_Jack.kl
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service \
-    android.hardware.keymaster@4.0-impl \
-    android.hardware.keymaster@4.0-service \
-    android.hardware.keymaster@3.0.vendor \
-    android.hardware.keymaster@4.0.vendor \
-    android.hardware.keymaster@4.1.vendor \
-    android.hardware.gatekeeper@1.0 \
-    android.hardware.gatekeeper@1.0.vendor
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_sdm660
@@ -340,10 +315,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
-
-# Neural Networks
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.3
 
 # OMX
 PRODUCT_PACKAGES += \
