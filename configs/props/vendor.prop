@@ -100,17 +100,9 @@ vendor.audio.feature.wsa.enable=false
 ro.apex.updatable=true
 
 # Bluetooth
-persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.bluetooth.bluetooth_audio_hal.disabled=false
 ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=cherokee
-persist.vendor.bt.a2dp.aac_whitelist=false
-persist.vendor.qcom.bluetooth.enable.splita2dp=true
-persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac
-persist.bluetooth.a2dp_offload.disabled=false
-ro.bluetooth.a2dp_offload.supported=true
-ro.bluetooth.library_name=libbluetooth_qti.so
-vendor.audio.feature.a2dp_offload.enable=true
 
 # Camera
 persist.vendor.camera.preview.ubwc=0

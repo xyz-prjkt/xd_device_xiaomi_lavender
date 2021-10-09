@@ -4,8 +4,6 @@ ro.qcom.ad.calib.data=/system/etc/calib.cfg
 ro.qcom.ad.sensortype=2
 
 # Bluetooth
-persist.vendor.bt.a2dp.aac_whitelist=false
-ro.bluetooth.library_name=libbluetooth_qti.so
 vendor.bluetooth.soc=cherokee
 
 # Charger
