@@ -269,17 +269,13 @@ PRODUCT_PACKAGES += \
     org.ifaa.android.manager
 
 # IFAA JAR
-PRODUCT_BOOT_JARS += \
-    org.ifaa.android.manager
+# PRODUCT_BOOT_JARS += \
+#    org.ifaa.android.manager
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common_system \
-    ims_ext_common.xml \
-
-# IMS JAR
-PRODUCT_BOOT_JARS += \
-    ims-ext-common_system
+    ims-ext-common \
+    ims_ext_common.xml
 
 # Init
 PRODUCT_PACKAGES += \
@@ -333,6 +329,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
+# Neural Networks
+PRODUCT_PACKAGES += \
+    android.hardware.neuralnetworks@1.3
+
 # OMX
 PRODUCT_PACKAGES += \
     libavservices_minijail \
@@ -355,10 +355,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay \
     $(DEVICE_PATH)/overlay-lavender \
     $(DEVICE_PATH)/overlay-xd
-
-# QTI Bluetooth
-include vendor/qcom/opensource/commonsys-intf/bluetooth/bt-commonsys-intf-board.mk
-$(call inherit-product, vendor/qcom/opensource/commonsys-intf/bluetooth/bt-system-opensource-product.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -591,8 +587,8 @@ PRODUCT_PACKAGES += \
     libnl
 
 # WiFi Display JAR
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+# PRODUCT_BOOT_JARS += \
+#    WfdCommon
 
 # xRageControl
 PRODUCT_PACKAGES += \
