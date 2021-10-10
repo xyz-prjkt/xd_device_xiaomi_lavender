@@ -62,3 +62,6 @@ ro.storaged.event.interval=99999
 ro.vendor.qti.va_aosp.support=1
 persist.sys.usb.config=mtp,adb
 ro.debuggable=1
+
+# Supported AOSP Feature
+ro.support_one_handed_mode=true
