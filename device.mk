@@ -102,16 +102,15 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
+    android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth.audio@2.0-impl \
-    BluetoothQti \
-    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
-    libbluetooth_qti \
+    liba2dpoffload \
     libbthost_if \
     libhdmiedid \
     libhfp \
     libldacBT_dec \
     libsndmonitor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor
 
 # Boot animation
 TARGET_BOOTANIMATION_SIZE := 1080
