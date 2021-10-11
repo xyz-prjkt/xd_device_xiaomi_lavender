@@ -27,13 +27,4 @@
     <!-- Doze: does this device support STATE_DOZE and STATE_DOZE_SUSPEND?  -->
     <bool name="doze_display_state_supported">true</bool>
     
-    <!-- The number of columns in the QuickSettings -->
-    <integer name="quick_settings_num_columns">3</integer>
-
-    <!-- The number of rows in the QuickSettings -->
-    <integer name="quick_settings_max_rows">3</integer>
-
-    <!-- The default tiles to display in QuickSettings -->
-    <string name="quick_settings_tiles_default" translatable="false">wifi,bt,dnd,flashlight,rotation,battery</string>
-    
 </resources>
