@@ -106,6 +106,6 @@ void property_override_triple(char const product_prop[], char const system_prop[
 
 void vendor_load_properties()
 {
-    property_override("ro.build.description", "redfin-user 11 RQ3A.210905.001 7511028 release-keys");
-    property_override_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "google/redfin/redfin:11/RQ3A.210905.001/7511028:user/release-keys");
+    property_override("ro.build.description", "redfin-user 12 SPB5.210812.002 7671067 release-keys");
+    property_override_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "google/redfin/redfin:12/SPB5.210812.002/7671067:user/release-keys");
 }
