@@ -416,12 +416,12 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.xiaomi_sdm660-libperfmgr \
+    xyz_xyzuan.android.hardware.power@1.3-service.xiaomi_lavender-libperfmgr \
     android.hardware.power.stats@1.0-service.mock
 
 # Powerhint
     PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/power-libperfmgr/lavender_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(DEVICE_PATH)/xyz-power/lavender_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Preopt SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
@@ -517,9 +517,7 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel
+    $(DEVICE_PATH)
 
 # Shims
 PRODUCT_PACKAGES += \
