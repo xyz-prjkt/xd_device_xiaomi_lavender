@@ -165,6 +165,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.sdm660 \
     memtrack.sdm660 \
     libdisplayconfig \
+    libdisplayconfig.qti \
     libdisplayconfig.qti.vendor \
     libqdMetaData \
     libqdMetaData.system \
