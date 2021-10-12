@@ -42,10 +42,10 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/props/vendor.prop
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@6.0-impl:32 \
-    android.hardware.audio.effect@6.0-impl:32 \
+    android.hardware.audio@5.0-impl \
+    android.hardware.audio.effect@5.0-impl \
     android.hardware.audio.service \
-    android.hardware.soundtrigger@2.1-impl:32 \
+    android.hardware.soundtrigger@2.1-impl \
     audio.a2dp.default \
     audio.primary.sdm660 \
     audio.r_submix.default \
