@@ -50,7 +50,7 @@
     <string translatable="false" name="config_mainBuiltInDisplayCutout">M -80,0 L -80,80 L 80,80 L 80,0 Z</string>
 
     <!-- Height of the status bar -->
-    <dimen name="status_bar_height_portrait">80.0px</dimen>
+    <dimen name="status_bar_height_portrait">100.0px</dimen>
     <dimen name="status_bar_height_landscape">24.0dp</dimen>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
