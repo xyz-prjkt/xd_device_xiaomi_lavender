@@ -42,7 +42,7 @@ TARGET_ODM_PROP += $(DEVICE_PATH)/properties/odm.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/properties/product.prop
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/properties/system_ext.prop
-include $(DEVICE_PATH)/properties/device_prop.mk
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 
 # A/B
 ifeq ($(AB_OTA_UPDATER), true)
