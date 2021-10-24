@@ -255,18 +255,10 @@ PRODUCT_PACKAGES += \
     IFAAService \
     org.ifaa.android.manager
 
-# IFAA JAR
-PRODUCT_BOOT_JARS += \
-    org.ifaa.android.manager
-
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common_system \
-    ims_ext_common.xml \
-
-# IMS JAR
-PRODUCT_BOOT_JARS += \
-    ims-ext-common_system
+    ims-ext-common \
+    ims_ext_common.xml
 
 # Init
 PRODUCT_PACKAGES += \
@@ -573,10 +565,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
-
-# WiFi Display JAR
-PRODUCT_BOOT_JARS += \
-    WfdCommon
 
 # xRageControl
 PRODUCT_PACKAGES += \
