@@ -488,7 +488,10 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
+    $(DEVICE_PATH) \
+    hardware/qcom/display \
+    hardware/qcom/media \
+    vendor/qcom/opensource/audio-hal/primary-hal
 
 # Shims
 PRODUCT_PACKAGES += \
