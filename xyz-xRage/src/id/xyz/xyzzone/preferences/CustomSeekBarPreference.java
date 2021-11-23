@@ -90,7 +90,6 @@ public class CustomSeekBarPreference extends Preference implements SeekBar.OnSee
         mSeekBar = new SeekBar(context, attrs);
         mSeekBar.setMax(mMax - mMin);
         mSeekBar.setOnSeekBarChangeListener(this);
-        setLayoutResource(R.layout.preference_custom_seekbar);
     }
 
     public CustomSeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr) {

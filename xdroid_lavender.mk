@@ -32,6 +32,7 @@ $(call inherit-product, device/xiaomi/lavender/device.mk)
 # Inherit vendor proprietary files
 $(call inherit-product, vendor/xiaomi/lavender/lavender-vendor.mk)
 $(call inherit-product, vendor/xiaomi/lavender/sdm660-vendor.mk)
+$(call inherit-product, vendor/xiaomi/dirac/dirac.mk)
 
 # Inherit some common xd stuff.
 $(call inherit-product, vendor/xdroid/config/common.mk)
@@ -42,10 +43,10 @@ XDROID_UI_BLUR := true
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="lavender" \
     PRODUCT_NAME="lavender" \
-    PRIVATE_BUILD_DESC="redfin-user 11 RQ3A.210905.001 7511028 release-keys"
+    PRIVATE_BUILD_DESC="redfin-user 11 RQ3A.211001.001 7641976 release-keys"
 
 # Build Fingerprint
-BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210905.001/7511028:user/release-keys"
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.211001.001/7641976:user/release-keys"
 
 # Device identifier
 PRODUCT_NAME := xdroid_lavender

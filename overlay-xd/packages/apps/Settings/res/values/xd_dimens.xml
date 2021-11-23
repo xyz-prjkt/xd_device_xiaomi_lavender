@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2018 The Xiaomi-SDM660 Project
+<!--
+     Copyright 2021 xyzuan, xyzprjkt
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,7 +14,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <color name="homepage_parts_background">#00000000</color>
-    <color name="homepage_parts_icon">#757575</color>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- xd. About Phone -->
+    <dimen name="xd_about_phone_ill_height">265dp</dimen>
+    <dimen name="xd_about_phone_ill_width">120dp</dimen>
+
 </resources>
